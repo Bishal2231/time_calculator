@@ -1,0 +1,134 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Back Button Styles */
+.back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.back-button a {
+    color: #333;
+    text-decoration: none;
+    font-size: 24px; /* Adjust size as needed */
+}
+
+.back-button i {
+    margin: 0;
+}
+
+/* Profile Container Styles */
+.profile-container {
+    width: 320px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Profile Header Styles */
+.profile-header {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.profile-photo-container {
+    position: relative;
+    top: -60px;
+    margin-bottom: -60px;
+}
+
+.profile-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.username-box {
+    background-color: #f0a500;
+    padding: 10px;
+    border-radius: 20px;
+    display: inline-block;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header h1 {
+    font-size: 20px;
+    color: white;
+    margin: 0;
+}
+
+/* Profile Options Styles */
+.profile-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left; /* Aligns text to the left */
+}
+
+/* Option Button Styles */
+.option-button {
+    background-color: #f0a500;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start (left) */
+    gap: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.option-button i {
+    font-size: 18px;
+    margin-right: 15%;
+}
+.option-button a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    margin-right: 15%;
+}
+
+.option-button:hover {
+    background-color: #e09500;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav i {
+    font-size: 24px;
+    color: #333;
+}

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shifts Management</title>
+    <link rel="stylesheet" href="/css/shift.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- <div class="back-button">
+        <a href="index.html"><i class="fas fa-arrow-left"></i></a>
+    </div> -->
+
+    <div class="shifts-container">
+        <div class="shifts-list">
+            <h2>Your Shifts</h2>
+            <ul id="shift-list">
+                <!-- List of shifts will be dynamically added here -->
+            </ul>
+        </div>
+
+        <div class="shifts-form">
+            <h2>Add a New Shift</h2>
+            <form id="shift-form">
+                <label for="shift-date">Date:</label>
+                <input type="date" id="shift-date" required>
+                
+                <label for="shift-start">Start Time:</label>
+                <input type="time" id="shift-start" required>
+                
+                <label for="shift-end">End Time:</label>
+                <input type="time" id="shift-end" required>
+                
+                <button type="submit">Add Shift</button>
+            </form>
+        </div>
+    </div>
+  
+    <!-- footer -->
+     <%-include('include/footer.ejs')%>
+
+    <script src="/js/shifts.js"></script>
+</body>
+</html>

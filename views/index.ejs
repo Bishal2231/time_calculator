@@ -1,0 +1,77 @@
+    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <%-include('include/navbar.ejs')%>
+    <div class="container">
+   
+        <h1>Time Tracker </h1>
+
+        <div id="dashboard">
+            <h2>Dashboard</h2>
+            <div id="summary">
+                <p>Total Hours Worked: <span id="total-hours">0</span></p>
+                <p>Total Earnings: $<span id="total-earnings">0.00</span></p>
+            </div>
+        </div>
+
+        <div id="time-tracker">
+            <h2>Time Tracker</h2>
+            <button id="clock-in-btn">Clock In</button>
+            <button id="clock-out-btn" disabled>Clock Out</button>
+            <div id="time-logs"></div>
+            <div> 
+
+                <% if(user){%>
+                    <button onclick="sendData()">save</button>
+
+                    <% }%>
+      
+
+            </div>
+            <div> 
+               
+                <button onclick="clearData()">clear</button>
+
+           </div>
+            <div id="successBar" style="display: none;">
+                Success!
+                <div id="progressBar"></div>
+            </div>
+            <div id="unSuccessBar" style="display: none;">
+                Failed!
+                <div id="progressBar"></div>
+            </div>
+        </div>
+
+        <div id="wage-calculator">
+            <h2>Wage Calculator</h2>
+            <label for="hourly-rate">Hourly Rate ($):</label>
+            <input type="number" id="hourly-rate" value="15">
+        </div>
+
+        <div id="manual-entry">
+            <h2>Manual Time Entry</h2>
+            <label for="manual-hours">Hours:</label>
+            <input type="number" id="manual-hours">
+            <button id="add-manual-time">Add Time</button>
+        </div>
+    </div>
+            <!-- Navigation bar at the bottom -->
+  <%-include('include/footer.ejs')%>
+    <script src="/js/script.js" defer></script>
+
+</body>
+</html>
+

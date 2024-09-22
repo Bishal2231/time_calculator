@@ -1,0 +1,289 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Back Button Styles */
+.back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.back-button a {
+    color: #333;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.back-button i {
+    margin: 0;
+}
+
+/* Shifts Container Styles */
+.shifts-container {
+    width: 90%;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Styles */
+.shifts-form {
+    margin-bottom: 20px;
+}
+
+.shifts-form h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.shifts-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.shifts-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.shifts-form button {
+    background-color: #f0a500;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.shifts-form button:hover {
+    background-color: #e09500;
+}
+
+/* Shifts List Styles */
+.shifts-list {
+    border-top: 2px solid #ddd;
+    padding-top: 10px;
+}
+
+.shifts-list h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+#shift-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#shift-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shift-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.shift-info span {/* General Body Styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    /* Back Button Styles */
+    .back-button {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+    }
+    
+    .back-button a {
+        color: #333;
+        text-decoration: none;
+        font-size: 24px;
+    }
+    
+    .back-button i {
+        margin: 0;
+    }
+    
+    /* Shifts Container Styles */
+    .shifts-container {
+        width: 90%;
+        max-width: 800px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Form Styles */
+    .shifts-form {
+        margin-bottom: 20px;
+    }
+    
+    .shifts-form h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .shifts-form label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .shifts-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+    
+    .shifts-form button {
+        background-color: #f0a500;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .shifts-form button:hover {
+        background-color: #e09500;
+    }
+    
+    /* Shifts List Styles */
+    .shifts-list {
+        border-top: 2px solid #ddd;
+        padding-top: 10px;
+    }
+    
+    .shifts-list h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    
+    #shift-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #shift-list li {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .shift-info {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .shift-info span {
+        margin-bottom: 5px;
+    }
+    
+    /* Delete Button Styles */
+    .delete-btn {
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    
+    .delete-btn:hover {
+        background-color: #d43f3a;
+    }
+    
+    .delete-btn i {
+        margin-left: 5px;
+    }
+    
+    margin-bottom: 5px;
+}
+
+.delete-btn {
+    color: #ff4d4d;
+    border: none;
+    background: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    color: #d43f3a;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav i {
+    font-size: 24px;
+    color: #333;
+}

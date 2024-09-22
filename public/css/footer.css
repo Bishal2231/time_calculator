@@ -1,0 +1,17 @@
+.bottom-nav {
+    position: fixed;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav i {
+    font-size: 24px;
+    color: #333;
+}
