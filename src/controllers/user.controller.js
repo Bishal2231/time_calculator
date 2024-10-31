@@ -16,10 +16,10 @@ import {Calculator} from "../models/calculator.model.js"
             
             // Handle file uploads
             // const avatarPath = req.files && req.files['avatar'] ? req.files['avatar'][0].path : null; =req
-            console.log("req.body",req.body)
+          
             const avatar=req.file
             const avatarPath=avatar.path
-    console.log("avatar",avatarPath)
+
     
             // Check if the user is already registered
             const alreadyRegisterUser = await User.findOne({
@@ -52,11 +52,10 @@ import {Calculator} from "../models/calculator.model.js"
             // const avatarpath=avatar?.path
             const avatarlink= await uploadoncloudinary(avatarPath)
             
-          console.log("avatarlink",avatarlink)
-
+      
     
             const avatarUrl=avatarlink?.url
-            console.log("avatarUrl",avatarUrl)
+      
             const user=await User.create({
                 name,
                 email,
@@ -68,7 +67,7 @@ import {Calculator} from "../models/calculator.model.js"
                 DOB
       
             })
-            console.log("user",user)
+
 
             if(!user){
                 // const error="no such user try signin"
@@ -96,7 +95,7 @@ import {Calculator} from "../models/calculator.model.js"
     })
     const handleUserLogin=asynchandler(async(req,res)=>{
         const {email,password}=req.body
-        console.log(req.body) 
+     
         const user=await User.findOne({ email })
         if(!user){
             throw new Error(404,"user not found")
@@ -140,15 +139,13 @@ import {Calculator} from "../models/calculator.model.js"
     })
  const handlesendData=asynchandler(async(req,res)=>{
         const user=req.user?req.user:null  //need his wity ternary operator
-        console.log(user)
-        // if(!user){
-        //   return res.render("error.ejs")
-        // }
+   
+        
 
 
 
             const data=req.body;
-            console.log("backend data  ",data);
+         
             if(data.totalEarnings &&data.totalHours){
 
                const timehis=await Time.create({
@@ -158,7 +155,7 @@ import {Calculator} from "../models/calculator.model.js"
                 owner:user?user._id:null,
                 totalhour:data.totalHours
                })
-               console.log(timehis)
+        
                 res.status(200).json({ message: "success", data: data });
 
             }
@@ -170,7 +167,7 @@ import {Calculator} from "../models/calculator.model.js"
   const handleShiftSendData=asynchandler(async(req,res)=>{
         const data=req.body
         //   shiftDate,shiftTime,endTime
-        console.log(data);
+ 
         const user=req.user
 
         const shift=await Shift.create({
@@ -181,7 +178,7 @@ import {Calculator} from "../models/calculator.model.js"
 
         })
 
-        console.log("hello world",shift);
+       
             if(shift){
                 return res.status(200).json({message:"success",data:shift})
             }else{
@@ -191,8 +188,7 @@ import {Calculator} from "../models/calculator.model.js"
 })
 
   const handleCalculatorData=asynchandler(async(req,res)=>{
- 
-console.log("calculator is woeking")
+
      const data=req.body
      const user=req.user
      
@@ -202,8 +198,7 @@ console.log("calculator is woeking")
         totalWage:data.totalWage,
         owner:user?user._id:null
      })
-     console.log("working");
-console.log("calculatorCreate",calculatorCreate)
+
 if(calculatorCreate){
     return res.status(200).json({message:"Success",data:calculatorCreate})
 

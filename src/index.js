@@ -52,7 +52,6 @@ DBCONNECT()
  app.get('/',userlogged,(req,res)=>{
      
     const user=req.user;
-        console.log(user);
     if(user){ 
         res.render('index.ejs',{user,port})  
     }else{
@@ -64,11 +63,8 @@ DBCONNECT()
 app.get('/profile/:id',isuserlogin,userlogged,async (req,res)=>{
 
     const userId=req.params.id
-    console.log(userId)
    const user=await User.findById(userId)
-   console.log(user)
    if(user){
-    console.log("usr exit")
     return res.render("profile.ejs",{user:user})
 
    }
@@ -141,7 +137,6 @@ app.get('/timehistory/:id',isuserlogin,userlogged,async(req,res)=>{
 
 
     if(!(texts.length===0)){   
-         console.log(texts)
         return res.render("timetracker.ejs",{texts,user})
     }else{
         const error={
@@ -161,10 +156,10 @@ else{
 app.get('/calculator/history/:id',isuserlogin,userlogged,async(req,res)=>{
     const userId=req.params.id
     const user=req.user
-    console.log(userId) 
+
     const userexits=await User.findById(userId)
     if(userexits){
-        console.log("user exxits")
+
         
         const data=await Calculator.find({owner:userId}).sort({createdat:-1})
         if(!(data.length===0)){

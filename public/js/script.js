@@ -71,10 +71,7 @@
 
     // Function to 00000000000000000000000000 the data
     function sendData() {
-        console.log("startclock:", startclock); // This will now log the correct value
-        console.log("endclock:", endclock); 
-        console.log("total earning",totalEarnings) 
-        
+   
 
 
 
@@ -106,7 +103,7 @@
 
 
         if( data.message==="success"){
-                console.log("success")
+          
                 showSuccessBar();
                 setTimeout(() => {
                     timeLog.innerText="Data saved  sucessfull " // Reset width
@@ -115,7 +112,6 @@
 
             } 
         else{
-                console.log("failure")
                 unSuccessBar();
                 setTimeout(() => {
                     timeLog.innerText="Data  saved unsucessfull " // Reset width
@@ -125,7 +121,7 @@
         
         })
         .catch((error) => {
-            console.error('Error:', error); 
+           console.log("error",error)
         });
     }
     function unSuccessBar(){
