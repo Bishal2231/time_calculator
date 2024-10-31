@@ -1,27 +1,146 @@
-<nav class="navbar">
-    <div class="navbar-brand">My App</div>
-    <button class="navbar-toggler">
-        <i class="fas fa-bars"></i>
-    </button>
-    <ul class="navbar-nav">
-        <li><a href="/calculator">Calculator</a></li>
-        <li><a href="/shift">Shifts</a></li>
-        <!-- <li><a href="/profile">Profile</a></li> -->
-      <%  if(user){%>
-      <li class="avatar"> <a href="/profile/<%=user._id%>"><img src="<%=user.avatar%>" alt="user photo"></a> </li> 
-      <!-- <li><img src="<%=user.avatar%>" alt="user"></li> -->
-      <li> <form action="/logout" method="post">
-            
-            <button type="submit">logged out </button>
+
+<nav>
+
+       
+
+    <a href="/"><img src="/icon/webflogo.png" alt="logo"> 
+    </a>
+    <div class="nav-links" id="navLinks">
+      <!-- <i class="fa-solid fa-bars"></i>  3line--> 
+      <!-- <i class="fa fa-podcast" onclick="hideMenu()"></i> -->
+      <i class="fas fa-times" onclick="hideMenu()" ></i>
+      
+      <div class="menu-container">
+         
+        <div class="menu-item"><ul><li><a href="/calculator">Calculator</a></li></ul></div>
+        <div class="menu-item"><ul><li><a href="/shift"> Shift</a></li></ul></div>
+    
+      
+      </div>
+    </div>
+
+    <div class="nav-icons">
+      <%if(user){%>
+ 
+      <div class="profile-dropdown">
+         
+        <div class="profile-btn">
+           <a href="/profile/<%=user._id%>"><img src="<%=user.avatar%>" alt="User" class="profile-user"/></a>
+           </div>
+
+          
+        <div class="dropdown-content">
+
+
+
+       <!-- <div>
+           <form method="get"  action="/homepage/<%=user._id%>">
+              <button>  Updateinfo</button>
+          </form> 
+          <a href="/user/update/<%=user.id%>">Update Info</a>
+       </div> -->
+       
+     
+
+       <div>
+          <form method="post"  action="/logout">
+              <button class="logout">  Logout</button>
+          </form>
+       </div>
+
+
+       <!-- <div>
+        <form method="get"  action="/text/<%=user._id%>">
+            <button>  Add Notice</button>
         </form>
        
-    </li> 
+     </div> -->
 
-       <% }%>
-       <%  if(!user){%>
-        <li><a href="/signup">signup</a></li>
-        <li><a href="/login">login</a></li>
-        <% }%>
+        </div>
+      </div>
+      <div class="setting">
+        <i class="fa-solid fa-gear"></i>
+       </div>
+      <%}%>
+
+      <%if(!user){%>  
+
+          <div class="DIV" ><a href="/login">LOGIN</a> </div>
+         <div class="slash"> /</div> 
+          <div class="DIV">  <a href="/signup">SIGNUP</a></div>
        
-    </ul>
-</nav>
+          <%}%>
+      <!-- <i class="fa-solid fa-bars" onclick="showMenu()"></i> -->
+      <!-- <i class=" fa fa-podcast" onclick="showMenu()"></i> -->
+      <!-- <i class=" fa-solid fa-bars"></i> -->
+      <i class="  fa-solid fa-bars "  onclick="showMenu()"></i> 
+
+
+    </div>
+  </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+const userpp = document.querySelector(".setting");
+const useropt = document.querySelector(".dropdown-content");
+
+if(useropt){
+  useropt.style.display="none";
+
+}
+if(userpp){
+
+
+userpp.addEventListener("click", () => {
+
+ if(useropt.style.display==="block") {
+  useropt.style.display="none"
+  }
+else{
+
+  useropt.style.display="block";
+}
+ 
+
+})};
+})
+;
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <nav class="navbar">
+    <div class="navbar-brand">My App</div>
+    <button class="navbar-toggler" onclick="toggleNavbar()">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="navbar-menu" id="navbarMenu">
+        <ul class="navbar-nav">
+            <li><a href="/calculator">Calculator</a></li>
+            <li><a href="/shift">Shifts</a></li>
+            <% if (user) { %>
+                <li class="avatar">
+                    <a href="/profile/<%= user._id %>"><img src="<%= user.avatar %>" alt="user photo"></a>
+                </li>
+                <li>
+                    <form action="/logout" method="post">
+                        <button type="submit">Log Out</button>
+                    </form>
+                </li>
+            <% } else { %>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Login</a></li>
+            <% } %>
+        </ul>
+    </div>
+</nav> -->

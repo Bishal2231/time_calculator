@@ -4,6 +4,8 @@ import {v4 as uuidv4} from "uuid"
 import { setUser } from "../utils/cokkie.js"
 import {uploadoncloudinary} from "../utils/uploadoncloudinary.js"
 import { Time } from "../models/timetrakker.model.js"
+import {Shift} from "../models/shift.model.js"
+import {Calculator} from "../models/calculator.model.js"
     // import { Text } from "../models/text.js"
     // import {Question} from "../models/contact.model.js"
 
@@ -165,7 +167,54 @@ import { Time } from "../models/timetrakker.model.js"
 
             }
         })
+  const handleShiftSendData=asynchandler(async(req,res)=>{
+        const data=req.body
+        //   shiftDate,shiftTime,endTime
+        console.log(data);
+        const user=req.user
 
-    
-    
-    export {handlerUserSignup,handleUserLogin,handleUserLogout,handlesendData}
+        const shift=await Shift.create({
+            shiftDate:data.shiftDate,
+            shiftTime:data.shiftTime,
+            endTime:data.endTime,
+            owner:user?user._id:null
+
+        })
+
+        console.log("hello world",shift);
+            if(shift){
+                return res.status(200).json({message:"success",data:shift})
+            }else{
+                return res.status(400).json({message:"error occured"})
+        }
+
+})
+
+  const handleCalculatorData=asynchandler(async(req,res)=>{
+ 
+console.log("calculator is woeking")
+     const data=req.body
+     const user=req.user
+     
+     const calculatorCreate=await Calculator.create({
+        hoursWorked:data.hoursWorked,
+        hourlyRate:data.hourlyRate,
+        totalWage:data.totalWage,
+        owner:user?user._id:null
+     })
+     console.log("working");
+console.log("calculatorCreate",calculatorCreate)
+if(calculatorCreate){
+    return res.status(200).json({message:"Success",data:calculatorCreate})
+
+}
+else{
+    return res.status(400).json({message:"Failed"})
+
+}
+
+
+
+})
+
+    export {handlerUserSignup,handleUserLogin,handleUserLogout,handlesendData,handleShiftSendData,handleCalculatorData}

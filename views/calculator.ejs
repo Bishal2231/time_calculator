@@ -1,22 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Tracker & Wage Calculator</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+
     <link rel="stylesheet" href="/css/calculator.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/title.png">
+
 </head>
 <body>
-
+    <%-include('include/navbar.ejs')%>
     <div class="container">
-        <!-- <a href="index.html">
-            <i class="fa-solid fa-arrow-left"></i>
-        </a> -->
-                <h1> Wage Calculator</h1>
+        <h1>Wage Calculator</h1>
         <label for="hoursWorked">Hours Worked:</label>
         <input type="number" id="hoursWorked" placeholder="Enter hours worked">
         
@@ -26,27 +25,41 @@
         <div class="button-group">
             <button onclick="calculateWage()">Calculate Wage</button>
             <button onclick="resetData()">Reset</button>
-            <button onclick="saveRecord()">Save Record</button>
+            <button  class="saveRecord"   onclick="saveRecord()">Save Record</button>
         </div>
 
         <h2>Total Wage: <span id="totalWage">$0.00</span></h2>
         
         <div class="history">
             <h2>History</h2>
-            <div id="historyRecords"></div>
+            <div id="historyRecords"> 
+                <p class="info"></p> 
+                <div class="message-histor"></div>
+            </div>
         </div>
     </div>
 
-
-        <!-- Navigation bar at the bottom -->
-       <%-include('include/footer.ejs')%>
+    <!-- Navigation bar at the bottom -->
+    <%- include('include/footer.ejs') %>
 
     <script>
+        // Load history from localStorage on page load
+        window.onload = function() {
+            localStorage.removeItem('wageHistory'); 
+            loadHistory();
+        };  
+
         function calculateWage() {
             const hoursWorked = parseFloat(document.getElementById('hoursWorked').value);
             const hourlyRate = parseFloat(document.getElementById('hourlyRate').value);
             const totalWage = hoursWorked * hourlyRate;
             document.getElementById('totalWage').innerText = `$${totalWage.toFixed(2)}`;
+            if(hoursWorked&&hourlyRate){
+   const saveBtn=document.querySelector(".saveRecord")
+            saveBtn.style.display="block"
+            }
+         
+
         }
 
         function resetData() {
@@ -60,58 +73,84 @@
             const hourlyRate = document.getElementById('hourlyRate').value;
             const totalWage = document.getElementById('totalWage').innerText;
             
-
             if (hoursWorked && hourlyRate) {
-                const record = `Hours Worked: ${hoursWorked}, Hourly Rate: ${hourlyRate}, Total Wage: ${totalWage}`;
-                const historyRecord = document.createElement('div');
-                historyRecord.className = 'history-record';
-                historyRecord.textContent = record;
-                document.getElementById('historyRecords').appendChild(historyRecord);
-                
-                const data={hoursWorked,hourlyRate,totalWage}
-               
-                    // 
-                  
-    
+                const record = {
+                    hoursWorked,
+                    hourlyRate,
+                    totalWage
+                };
 
+                // Get the existing history from localStorage
+                let history = JSON.parse(localStorage.getItem('wageHistory')) || [];
 
+                // Add the new record at the start (prepend)
+                history.unshift(record);
 
+                // Save updated history back to localStorage
+                localStorage.setItem('wageHistory', JSON.stringify(history));
 
-const apiURL="http://localhost:3007/sendCalculatorData"
-    fetch(apiURL,{
-        method:'POST',
-        headers: {
-            'Content-Type': 'application/json' // Sending JSON data
-        },
-        body: JSON.stringify(data) 
+                // Update the history display
+                displayHistory(history);
 
-    })
-
-    .then(response => response.json()) // Parse the response as JSON
-    .then(data => {
-
-      
-    })
-    .catch((error) => {
-        console.error('Error:', error); 
-    });
-
-
-
-
-
-
-
-
-
-
-
-                    // 
                 resetData();  // Reset the input fields after saving the record
+
+                // Send the data to the server
+                sendRecordToServer(record);
             } else {
                 alert('Please enter both hours worked and hourly rate.');
             }
         }
+
+        function loadHistory() {
+            // Load the history from localStorage and display it
+            let history = JSON.parse(localStorage.getItem('wageHistory')) || [];
+            displayHistory(history);
+        }
+
+        function displayHistory(history) {
+            const infoElement = document.querySelector('.info');
+            infoElement.innerHTML = '';  // Clear existing history
+
+            // Loop through history and display each record
+            history.forEach((record, index) => {
+                const recordDiv = document.createElement('div');
+                recordDiv.className = 'history-record';
+                recordDiv.textContent = `#${index + 1}: Hours Worked: ${record.hoursWorked}, Hourly Rate: ${record.hourlyRate}, Total Wage: ${record.totalWage}`;
+                infoElement.appendChild(recordDiv);
+            });
+        }
+
+        function sendRecordToServer(data) {
+            const apiURL = "http://localhost:3003/calculator";
+            fetch(apiURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' // Sending JSON data
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json()) // Parse the response as JSON
+            .then(responseData => {
+                const messageElement = document.querySelector('.message-histor');
+
+                if (responseData.message === 'Success') {
+                    messageElement.innerText = 'Data saved successfully!';
+                    messageElement.style.color = 'green';
+                     const saveBtn=document.querySelector(".saveRecord")
+            saveBtn.style.display="none"
+                } else {
+                    messageElement.innerText = 'Failed to save data.';
+                    messageElement.style.color = 'red';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                const messageElement = document.querySelector('.message-histor');
+                messageElement.innerText = 'An error occurred.';
+                messageElement.style.color = 'red';
+            });
+        }
     </script>
+    <script src="/js/nav.js" defer> </script>
 </body>
 </html>

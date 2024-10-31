@@ -1,5 +1,5 @@
 /* General Body Styles */
-body {
+main {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -9,6 +9,17 @@ body {
     align-items: center;
     min-height: 100vh;
 }
+.shifts-container{
+    z-index:1;
+}
+
+.success{
+    display: none;
+
+}
+.failed{
+    display: none;
+}
 
 /* Back Button Styles */
 .back-button {
@@ -16,6 +27,14 @@ body {
     top: 10px;
     left: 10px;
     z-index: 1000;
+}
+.save-btn{
+    padding:10px;
+    color:rgba(34, 34, 232, 0.88);
+    border:1px solid rgba(34, 34, 232, 0.88);
+    background-color: white;
+    border-radius: 10px;
+    font-family:monospace
 }
 
 .back-button a {
@@ -286,4 +305,24 @@ body {
 .bottom-nav i {
     font-size: 24px;
     color: #333;
+}
+.bottom-nav{
+    display: none !important;
+    }
+
+    .text{
+        color:crimson;
+        background-color: white;
+        padding:17px;
+        border:0.5px solid crimson;
+        border-radius: 10px;
+        font-size: 1.5 rem;
+    }
+@media (max-width: 768px) {
+    .bottom-nav{
+        display: flex !important;
+        }
+        .shifts-list{
+            margin-bottom:50px;
+        }
 }

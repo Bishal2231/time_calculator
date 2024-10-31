@@ -1,10 +1,12 @@
-/* Basic Styles for Navbar */
+/* General Premium Styles */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    height:100vh;
+    width:100vw;
+    overflow-x:unset;
 }
-/* ------------nav bar--------------- */
-
 #successBar {
     display: none; 
     background-color: green; 
@@ -35,61 +37,41 @@ body {
     width: 100%; 
     border-bottom: 2px solid yellow; /* Change color as needed */
 }
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .navbar-nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background-color: #007bff;
-        border-radius: 5px;
-        width: auto; /* Ensure the dropdown doesn't take full width */
-    }
-
-    .navbar-nav.active {
-        display: flex;
-    }
-
-    .navbar-nav li {
-        text-align: right;
-        padding: 10px 15px;
-    }
-
-    .navbar-toggler {
-        display: block;
-    }
+#summary,#time-logs{
+    padding:10px;
+    margin:10px;
 }
-/* ------------nav bar--------------- */
-
+#time-logs{
+    display: none;
+}
 .container {
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 h1, h2 {
     color: #007BFF;
+    font-weight: 600;
 }
 
 button {
     background-color: #007BFF;
-    color: #fff;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+button:hover {
+    background-color: #0056b3;
 }
 
 input {
@@ -98,7 +80,33 @@ input {
     margin-right: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
 }
 
+input:focus {
+    border-color: #007BFF;
+}
+/* .bottom-nav{
+display: none !important;
+} */
 
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+      
+    }
+    /* .bottom-nav{
+        display: flex !important;
+        } */
+    h1, h2 {
+        font-size: 1.5rem;
+    }
 
+    button {
+        width: 100%;
+    }
+    #manual-entry{
+        margin-bottom: 75px;
+    }
+  
+}

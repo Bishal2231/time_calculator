@@ -1,11 +1,11 @@
 /* General Body Styles */
-body {
+main {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin-top  :0;
     padding: 0;
     background-color: #f0f0f0;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     height: 100vh;
@@ -31,13 +31,14 @@ body {
 
 /* Profile Container Styles */
 .profile-container {
-    width: 320px;
+    width: 32rem;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    margin-bottom: 50px;
+    margin-top: 50px;
+
 }
 
 /* Profile Header Styles */
@@ -88,7 +89,7 @@ body {
     background-color: #f0a500;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 5px;
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
@@ -98,6 +99,17 @@ body {
     justify-content: flex-start; /* Align items to the start (left) */
     gap: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.option-button1{
+color:white;
+background-color: inherit;
+border:none;
+/* button-style:none; */
+display: flex;
+padding:8px;
+gap:2rem;
+font-size:1rem;
+text-wrap: nowrap;
 }
 
 .option-button i {

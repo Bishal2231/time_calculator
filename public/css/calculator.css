@@ -6,6 +6,9 @@
             margin: 0;
             padding: 20px;
         }
+        .saveRecord{
+            display: none;
+        }
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -62,4 +65,15 @@
             padding: 5px;
             border-bottom: 1px solid #ccc;
         }
- 
+        .bottom-nav{
+            display: none !important;
+            }
+            @media (max-width: 768px) {
+                .bottom-nav{
+                    display: flex !important;
+                    }
+
+                    .history{
+                        margin-bottom: 37px;
+                    }
+            }

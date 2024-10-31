@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shift History</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/title.png">
+
+    
+    <style>
+        main {
+            padding: 20px;
+            background-color: #f9f9f9;
+            min-height: 100vh;
+        }
+
+        /* Additional styling for the main content */
+        .container {
+            margin-top: 20px;
+        }
+
+        .profile-card {
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .shift-entry {
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        h4 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .mt-5 {
+            margin-top: 2rem;
+        }
+
+        .saved-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: none; /* Initially hidden */
+        }
+
+        .saved-button:hover {
+            background-color: #0056b3;
+        }
+
+        .saved-time {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <%- include('include/navbar.ejs') %>
+    <main> 
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <% if (shifts.length > 0) { %>
+                        <div class="profile-card text-center">
+                            <h3><%= shifts[0].owner.name %></h3>
+                            <p><%= shifts[0].owner.email %></p>
+                            <p>Date of Birth: <%= shifts[0].owner.DOB %></p>
+                            <button class="saved-button" id="saved-at-button" style="display:none;">Saved At: <span id="saved-time"></span></button>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-8 offset-md-2">
+                    <h4>Shift History</h4>
+                    <% if (shifts.length > 0) { %>
+                        <% shifts.forEach(shift => { %>
+                            <div class="shift-entry">
+                                <h5><i class="far fa-calendar-alt"></i> Date: <%= shift.shiftDate %></h5>
+                                <p><i class="far fa-clock"></i> Shift Start: <%= shift.shiftTime %></p>
+                                <p><i class="far fa-clock"></i> Shift End: <%= shift.endTime %></p>
+                                <small>Logged on: <%= new Date(shift.createdAt).toLocaleString('en-US', { 
+                                    year: 'numeric', 
+                                    month: '2-digit', 
+                                    day: '2-digit', 
+                                    hour: '2-digit', 
+                                    minute: '2-digit', 
+                                    hour12: true 
+                                }) %></small>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p>No shift entries found.</p>
+                    <% } %>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    <%- include('include/footer.ejs') %>
+    <script src="/js/nav.js" defer></script>
+</body>
+</html>

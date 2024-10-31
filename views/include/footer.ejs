@@ -1,6 +1,9 @@
 <div class="bottom-nav">
-    <a href="index.html"><i class="fas fa-home"></i></a>
-    <a href="all.html"><i class="fa-solid fa-calculator"></i></a>
-    <a href="shifts.html"><i class="fa-solid fa-clock"></i></a>
-    <a href="profile.html"><i class="fas fa-user"></i></a>
+    <a href="/"><i class="fas fa-home"></i></a>
+    <a href="/calculator"><i class="fa-solid fa-calculator"></i></a>
+    <a href="/shift"><i class="fa-solid fa-clock"></i></a>
+ <%   if(user){%>
+        <a href="/profile/<%=user._id%>"><i class="fas fa-user"></i></a>
+        <%   }%>
+    
     </div>

@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/title.png">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
 </head>
 <body>
     <!-- <div class="back-button">
         <a href="index.html"><i class="fas fa-arrow-left"></i></a>
     </div> -->
-
+  <%-include('include/navbar.ejs')%>
+  <main>
     <div class="profile-container">
         <div class="profile-header">
             <div class="profile-photo-container">
@@ -25,28 +31,45 @@
             </div>
         </div>
         <div class="profile-options">
-            <button class="option-button">
+            <a href="/" class="option-button">
+            <button   class="option-button1">
             <i class="fa-solid fa-house"></i>         
-            <a href="/">Home</a>
+         <p>Home</p>   
 
             </button>
-            <button class="option-button">
+        </a>
+        <a href="/timehistory/<%=user._id%>" class="option-button">
+            <button class="option-button1">
              <i class="fas fa-dollar-sign"></i>
-                <a href="/all">Calculator</a>
+          <p>Time tracker History</p>    
             </button>
-            <button class="option-button">
-             <i class="fas fa-clock"></i>
-                <a href="shifts.html">View Shifts</a>
+        </a>
+
+        <a href="/calculator/history/<%=user.id%>"  class="option-button">
+            <button class="option-button1">
+            
+             <i class="fa-solid fa-calculator"></i>
+          <p> Calculator History</p>  
             </button>
+        </a>
+        <a href="/shift/histroy/<%=user._id%>"  class="option-button">
+            <button class="option-button1">
+                <i class="fas fa-clock"></i>           
+                   <p>  shift History</p>  
+               </button>
+            </a>
         </div>
     </div>
     
     <!-- Navigation bar at the bottom -->
-    <div class="bottom-nav">
+    <!-- <div class="bottom-nav">
         <a href="index.html"><i class="fas fa-home"></i></a>
         <a href="all.html"><i class="fa-solid fa-calculator"></i></a>
         <a href="shifts.html"><i class="fa-solid fa-clock"></i></a>
         <a href="profile.html"><i class="fas fa-user"></i></a>
-        </div>
+        </div> -->
+    </main>
+        <%-include('include/footer.ejs')%>
+        <script src="/js/nav.js" defer></script>
 </body>
 </html>

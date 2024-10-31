@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator History</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/title.png">
+
+    <style>
+        /* Optional styling for a table layout */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <%-include('include/navbar.ejs')%>
+    <main>
+    <h1>Calculator History</h1>
+
+    <% if (data && data.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hours Worked</th>
+                    <th>Hourly Rate</th>
+                    <th>Total Wage</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(entry => { %>
+                    <tr>
+                        <td><%= entry.hoursWorked %></td>
+                        <td><%= entry.hourlyRate %></td>
+                        <td><%= entry.totalWage %></td>
+                        <td><%= new Date(entry.createdAt).toLocaleDateString() %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No history data available.</p>
+    <% } %>
+</main>
+<%-include('include/footer.ejs')%>
+</body>
+</html>
