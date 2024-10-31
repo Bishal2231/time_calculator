@@ -98,7 +98,16 @@ import {Calculator} from "../models/calculator.model.js"
      
         const user=await User.findOne({ email })
         if(!user){
-            throw new Error(404,"user not found")
+            const error = {
+                heading: "User not found",
+                paragraph: "We encountered that there is no user ,try creating a new one",
+                name:login,
+                link:"/login"
+            };
+
+            return res.render("errorM.ejs", { error });
+
+            
         }
         if(user && (user.password===password)){
 
