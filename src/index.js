@@ -115,7 +115,7 @@ app.get('/shift/histroy/:id',isuserlogin,userlogged,async(req,res)=>{
 
 })
 app.get('/login',(req,res)=>{
-
+    
     res.render("login.ejs",{error:null})
 })
 app.get('/signup',(req,res)=>{

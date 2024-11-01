@@ -99,13 +99,10 @@ import {Calculator} from "../models/calculator.model.js"
         const user=await User.findOne({ email })
         if(!user){
             const error = {
-                heading: "User not found",
-                paragraph: "We encountered that there is no user ,try creating a new one",
-                name:"login",
-                link:"/login"
+               message:"Wrong Credential"
             };
 
-            return res.render("errorM.ejs", { error });
+            return res.render("login.ejs", { error });
 
             
         }
@@ -126,13 +123,10 @@ import {Calculator} from "../models/calculator.model.js"
         
        }else{
         const error = {
-            heading: "User not found",
-            paragraph: "We encountered that there is no user ,try creating a new one",
-            name:"login",
-            link:"/login"
-        };
+            message:"Wrong Credential"
+         };
 
-        return res.render("errorM.ejs", { error });
+         return res.render("login.ejs", { error });
        }
        
 

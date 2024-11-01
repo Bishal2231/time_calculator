@@ -6,6 +6,8 @@
     <title>Login Form</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/icon/title.png">
     <script src="/js/signin.js" defer></script>
+    <script src="/js/logout.js" defer></script>
+
 
     <style>
         .loading-screen {
@@ -98,7 +100,7 @@
        <% if(error) { %>
             <div class="error">
                 <span class="error-icon">&#9888;</span> <!-- Warning icon -->
-                <span><%= error %></span>
+                <span><%= error.message %></span>
             </div>
        <% } %>
         <h1>Login</h1>
