@@ -9,3 +9,9 @@ signinForm.addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent form submission if it's invalid
     }
 });
+window.addEventListener("pageshow", function() {
+    if (sessionStorage.getItem("showLoadingScreen") === "true") {
+        sessionStorage.removeItem("showLoadingScreen"); // Reset the flag
+        loadingScreen.style.display = "none"; // Hide loading screen
+    }
+});
