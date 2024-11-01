@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Prepare data to be sent to the server
             const data = { shiftDate, shiftTime, endTime };
-            const api = "http://localhost:3003/shiftSendDate";
+            const api = "/shiftSendDate";
             
             // Send data to the API
             fetch(api, {

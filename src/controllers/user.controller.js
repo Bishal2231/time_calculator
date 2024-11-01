@@ -33,7 +33,7 @@ import {Calculator} from "../models/calculator.model.js"
                 const error = {
                     heading: "User already has an account",
                     paragraph: "We encountered that you already have an account. Try login",
-                    name:login,
+                    name:"login",
                     link:"/login"
                 };
     
@@ -101,7 +101,7 @@ import {Calculator} from "../models/calculator.model.js"
             const error = {
                 heading: "User not found",
                 paragraph: "We encountered that there is no user ,try creating a new one",
-                name:login,
+                name:"login",
                 link:"/login"
             };
 
@@ -109,7 +109,10 @@ import {Calculator} from "../models/calculator.model.js"
 
             
         }
-        if(user && (user.password===password)){
+
+       const userpass= await user.isPasswordCorrect(password)
+       if(userpass){
+      
 
             const sesionid=uuidv4();
             setUser(sesionid,user)
@@ -120,7 +123,18 @@ import {Calculator} from "../models/calculator.model.js"
             res.render("index.ejs",{user:user})
             
 
-        }
+        
+       }else{
+        const error = {
+            heading: "User not found",
+            paragraph: "We encountered that there is no user ,try creating a new one",
+            name:"login",
+            link:"/login"
+        };
+
+        return res.render("errorM.ejs", { error });
+       }
+       
 
 
 

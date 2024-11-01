@@ -8,9 +8,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/icon/title.png">
 
  
-    <script src="/js/scriptM.js"></script>
+    <script src="/js/signup.js" defer></script>
 </head>
 <body>
+<!-- Add this loading screen HTML at the top of your body -->
+<div id="loadingScreen" class="loading-screen" style="display: none;">
+    <p>Signing up...</p>
+</div>
 
 
     <div class="container">
@@ -35,12 +39,12 @@
           
             <div class="form-group">
                 <label for="password">ADDRESS:</label>
-                <input type="text" class="password" name="address" placeholder="address" >
+                <input type="text" class="password" name="address" placeholder="address"required >
             </div>
        
             <div class="form-group">
                 <label for="password">DOB:</label>
-                <input type="date" class="password" name="DOB" placeholder="DATE OF BIRTH" >
+                <input type="date" class="password" name="DOB" placeholder="DATE OF BIRTH" required >
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>

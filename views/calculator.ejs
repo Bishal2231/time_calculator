@@ -23,9 +23,15 @@
         <input type="number" id="hourlyRate" placeholder="Enter hourly rate">
 
         <div class="button-group">
-            <button onclick="calculateWage()">Calculate Wage</button>
-            <button onclick="resetData()">Reset</button>
-            <button  class="saveRecord"   onclick="saveRecord()">Save Record</button>
+            <button onclick="calculateWage()" class="responsive-button">Calculate Wage</button>
+            <button onclick="resetData()" class="responsive-button">Reset</button>
+           <%if(user){%>
+                <button  class="saveRecord"   onclick="saveRecord()">Save Record</button>
+                <%  }%>
+                <%  if(!user){%>
+                <p class="warning"> only logged in user can save the Data</p>
+                <%}%>
+         
         </div>
 
         <h2>Total Wage: <span id="totalWage">$0.00</span></h2>
@@ -121,7 +127,7 @@
         }
 
         function sendRecordToServer(data) {
-            const apiURL = "http://localhost:3003/calculator";
+            const apiURL = "/calculator";
             fetch(apiURL, {
                 method: 'POST',
                 headers: {

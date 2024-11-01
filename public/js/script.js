@@ -79,7 +79,7 @@
             endclock:endclock?endclock:null
             ,totalEarnings,totalHours}
           
-    const apiURL=`http://localhost:3003/sendData`
+    const apiURL=`/sendData`
         fetch(apiURL,{
             method:'POST',
             headers: {

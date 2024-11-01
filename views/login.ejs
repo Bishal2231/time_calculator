@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/icon/title.png">
+    <script src="/js/signin.js" defer></script>
 
     <style>
+        .loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    z-index: 1000;
+}
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -76,6 +91,9 @@
     </style>
 </head>
 <body>
+    <div id="loadingScreen" class="loading-screen" style="display: none;">
+        <p>logging in...</p>
+    </div>
     <div class="login-container">
        <% if(error) { %>
             <div class="error">

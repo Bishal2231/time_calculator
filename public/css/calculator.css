@@ -9,6 +9,17 @@
         .saveRecord{
             display: none;
         }
+        .warning {
+            color: #D8000C; /* Red color for warning */
+            background-color: white; /* Light red background */
+            border: 1px solid #D8000C; /* Border matching the text color */
+            padding: 10px; /* Spacing inside the element */
+            font-weight: bold; /* Make the text bold */
+            border-radius: 5px; /* Rounded corners */
+            text-align: center; /* Center-align the text */
+            font-family: Arial, sans-serif; /* Font style */
+          }
+          
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -39,7 +50,7 @@
             justify-content: space-between;
             margin-top: 20px;
         }
-        button {
+        .responsive-button  {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -48,9 +59,36 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        button:hover {
+        .responsive-button :hover {
             background-color: #45a049;
         }
+        .button-group{
+            gap:10px;
+        }
+        /* start */
+        /* Default button style */
+
+   
+   
+
+  
+  /* Smaller screens */
+  @media (max-width: 768px) {
+    .responsive-button {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Extra small screens */
+  @media (max-width: 480px) {
+    .responsive-button {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+  }
+  
+        /* end */
         .history {
             margin-top: 20px;
             padding: 10px;
